@@ -174,13 +174,13 @@ def message_box(subject, content):
         pass
  
  
+width = 500
+rows = 20
+s = snake((255,0,0), (10,10))
+snack = cube(randomSnack(rows, s), color=(0,255,0))
 def main():
     global width, rows, s, snack
-    width = 500
-    rows = 20
     win = pygame.display.set_mode((width, width))
-    s = snake((255,0,0), (10,10))
-    snack = cube(randomSnack(rows, s), color=(0,255,0))
     flag = True
  
     clock = pygame.time.Clock()
@@ -195,8 +195,8 @@ def main():
  
         for x in range(len(s.body)):
             if s.body[x].pos in list(map(lambda z:z.pos,s.body[x+1:])):
-                print(\'Score: \', len(s.body))
-                message_box(\'You Lost!\', \'Play again...\')
+                print('Score: ', len(s.body))
+                message_box('You Lost!', 'Play again...')
                 s.reset((10,10))
                 break
  
