@@ -1,5 +1,6 @@
 import turtle
 
+
 wn = turtle.Screen()
 wn.title("Pong")
 wn.bgcolor("black")
@@ -53,25 +54,25 @@ pen.write("Player A: 0  Player B: 0", align="center", font=("Courier", 24, "norm
 
 
 # Function
-def paddle_a_up():
+def paddle_a_up(event):
     y = paddle_a.ycor()
     if y <= 250:
         y += 20
         paddle_a.sety(y)
 
-def paddle_a_down():
+def paddle_a_down(event):
     y = paddle_a.ycor()
     if y >= -230:
         y -= 20
         paddle_a.sety(y)
 
-def paddle_b_up():
+def paddle_b_up(event):
     y = paddle_b.ycor()
     if y <= 250:
         y += 20
         paddle_b.sety(y)
 
-def paddle_b_down():
+def paddle_b_down(event):
 
     y = paddle_b.ycor()
     if y >= -230:
@@ -80,11 +81,19 @@ def paddle_b_down():
     
 
 # Keyboard binding
+turtle.getcanvas().bind('<Up>', paddle_b_up)
+turtle.getcanvas().bind('<Down>', paddle_b_down)
+turtle.getcanvas().bind('<w>', paddle_a_up)
+turtle.getcanvas().bind('<s>', paddle_a_down)
+
+
 wn.listen()
-wn.onkey(paddle_a_up, "w")
-wn.onkey(paddle_a_down, "s")
-wn.onkey(paddle_b_up, "Up")
-wn.onkey(paddle_b_down, "Down")
+# wn.onkey(paddle_a_up, "w")
+# wn.onkey(paddle_a_down, "s")
+# wn.onkey(paddle_b_up, "Up")
+# wn.onkey(paddle_b_down, "Down")
+
+
 
 # Main game loop
 while True:
